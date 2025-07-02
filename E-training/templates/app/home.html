@@ -1,0 +1,117 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block landpage%}
+ <div class="container">
+        <div class="content">
+            <div class="text-content">
+                <h1>Learn without limits</h1>
+                <p>Start, switch, or advance your career with more than 7,000 courses, Professional Certificates, and degrees from world-class universities and companies.</p>
+                <div class="buttons">
+                    <button class="btn btn-primary">Join Now</button>
+                    <button class="btn btn-secondary">Try This </button>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="{% static "app/images/product/client-2.jpg" %}" alt="Smiling woman" class="profile-image">
+            </div>
+        </div>
+    </div>
+{% endblock landpage%}
+
+{% block information%}
+<div class="container">
+        <header>
+            <h1 class="title">Start <span>Learning</span></h1>
+        
+        </header>
+        <main class="course-grid">
+            <div class="course-card" data-category="AI">
+                <div class="card-content">
+                    <h3>Machine Learning</h3>
+                    <p>Explore the fundamentals of AI and ML</p>
+                </div>
+            </div>
+            <div class="course-card" data-category="Basics">
+                <div class="card-content">
+                    <h3>Computer Fundamentals</h3>
+                    <p>Build a strong foundation in computing</p>
+                </div>
+            </div>
+            <div class="course-card" data-category="Database">
+                <div class="card-content">
+                    <h3>DBMS</h3>
+                    <p>Master database management systems</p>
+                </div>
+            </div>
+            <div class="course-card" data-category="Systems">
+                <div class="card-content">
+                    <h3>Operating System</h3>
+                    <p>Understand how computers operate</p>
+                </div>
+            </div>
+            <div class="course-card" data-category="Networking">
+                <div class="card-content">
+                    <h3>Computer Networks</h3>
+                    <p>Learn about digital communication</p>
+                </div>
+            </div>
+            <div class="course-card" data-category="Web">
+                <div class="card-content">
+                    <h3>PHP</h3>
+                    <p>Develop dynamic web applications</p>
+                </div>
+            </div>
+            <div class="course-card" data-category="Web">
+                <div class="card-content">
+                    <h3>CSS</h3>
+                    <p>Style and layout web pages</p>
+                </div>
+            </div>
+            <div class="course-card" data-category="Programming">
+                <div class="card-content">
+                    <h3>C</h3>
+                    <p>Learn a fundamental programming language</p>
+                </div>
+            </div>
+        </main>
+</div>
+
+
+
+{% endblock information %}
+{% block Company %}
+ <div class="container mt-5">
+    <header class="text-center mb-4">
+        <h1 class="title">Placements <span class="text-primary">Here</span></h1>
+    </header>
+
+<div class="logos">
+<div class="logo_items">
+        <img src={% static "app/images/product/logo.png" %}>
+        <img src={% static "app/images/product/logo2.png" %}>
+        <img src={% static "app/images/product/logo3.png" %}>
+        <img src={% static "app/images/product/logo4.jpeg" %}>
+        <img src={% static "app/images/product/logo5.png" %}>
+        <img src={% static "app/images/product/logo.png" %}>
+        <img src={% static "app/images/product/logo2.png" %}>
+        <img src={% static "app/images/product/logo3.png" %}>
+        <img src={% static "app/images/product/logo4.jpeg" %}>
+        <img src={% static "app/images/product/logo5.png" %}>
+
+        </div>
+        <div class="logo_items">
+        <img src={% static "app/images/product/logo.png" %}>
+        <img src={% static "app/images/product/logo2.png" %}>
+        <img src={% static "app/images/product/logo3.png" %}>
+        <img src={% static "app/images/product/logo4.jpeg" %}>
+        <img src={% static "app/images/product/logo5.png" %}>
+        <img src={% static "app/images/product/logo.png" %}>
+        <img src={% static "app/images/product/logo2.png" %}>
+        <img src={% static "app/images/product/logo3.png" %}>
+        <img src={% static "app/images/product/logo4.jpeg" %}>
+        <img src={% static "app/images/product/logo5.png" %}>
+</div>
+</div>
+</div>
+{% endblock Company %}

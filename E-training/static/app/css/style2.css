@@ -1,0 +1,134 @@
+.background-radial-gradient {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  padding: 60px 0;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 50% 50%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Animated radial shapes */
+#radius-shape-1,
+#radius-shape-2 {
+  background: radial-gradient(hsl(218, 41%, 50%), transparent);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+  opacity: 0.7;
+}
+
+#radius-shape-1 {
+  top: -60px;
+  left: -60px;
+  width: 300px;
+  height: 300px;
+}
+
+#radius-shape-2 {
+  bottom: -60px;
+  right: -60px;
+  width: 250px;
+  height: 250px;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(-10px);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+}
+
+/* Glass card styling */
+.card.bg-glass {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: pulse 6s ease-in-out infinite;
+}
+
+/* Pulse animation for glass card */
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 12px 38px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Form input styles */
+.form-outline input {
+  background: white;
+  border: 2px solid hsl(218, 41%, 75%);
+  color: black;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  transition: border-color 0.4s;
+}
+
+.form-outline input:focus {
+  border-color: hsl(218, 81%, 85%);
+  outline: none;
+  box-shadow: none;
+}
+
+/* Button styling */
+.btn-primary {
+  background: linear-gradient(45deg, hsl(218, 81%, 65%), hsl(218, 81%, 55%));
+  border: none;
+  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  transition: background 0.4s, transform 0.3s;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(45deg, hsl(218, 81%, 75%), hsl(218, 81%, 60%));
+  transform: translateY(-3px);
+  box-shadow: 0 8px 15px rgba(13, 110, 253, 0.4);
+}
+
+/* Link hover effect */
+a.fw-bold:hover {
+  color: hsl(220, 60%, 99%);
+  text-decoration: underline;
+}
+
+/* Text styling */
+h2 {
+  color: hsl(218, 81%, 95%);
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+p {
+  color: hsl(224, 52%, 12%);
+  opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #radius-shape-1,
+  #radius-shape-2 {
+    width: 200px;
+    height: 200px;
+  }
+
+  .card.bg-glass {
+    padding: 1.5rem;
+  }
+}

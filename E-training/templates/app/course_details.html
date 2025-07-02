@@ -1,0 +1,128 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %}{{ course.name }} - Course Details{% endblock %}
+{% block training %}
+<link rel="stylesheet" href="{% static 'app/css/course_detail.css' %}" />
+<div class="course-container">
+    <div class="main-content">
+        <!-- Course Header -->
+        <div class="course-header">
+            <h1>{{ course.name }}</h1>
+            <p class="course-description">{{ course.description }}</p>
+        </div>
+
+        <!-- Video Section -->
+        <div class="video-section">
+            <div class="video-container" id="videoContainer">
+                <iframe 
+                    id="videoPlayer"
+                    src="https://www.youtube.com/embed/{{ lectures.0.video_id }}" 
+                    title="{{ lectures.0.title }}" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            <div class="lecture-badge" id="lectureStatus">Free Preview</div>
+        </div>
+        
+        <!-- Trainer Details Section -->
+        <div class="trainer-section">
+            <h2>Meet Your Trainer</h2>
+            <div class="trainer-card">
+                {% if course.trainer.trainer_img %}
+                    <div class="trainer-image">
+                        <img src="{{ course.trainer.trainer_img.url }}" alt="{{ course.trainer.trainer_name }}">
+                    </div>
+                {% endif %}
+                <div class="trainer-info">
+                    <h3>{{ course.trainer.trainer_name }}</h3>
+                    <div class="trainer-stats">
+                        <div class="stat">
+                            <i class="fas fa-brain"></i>
+                            <span>{{ course.trainer.expertise }}</span>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-clock"></i>
+                            <span>{{ course.trainer.experience }} years experience</span>
+                        </div>
+                    </div>
+                    <p class="trainer-bio">{{ course.trainer.bio }}</p>
+                    <div class="trainer-contact">
+                        <a href="mailto:{{ course.trainer.contact_email }}" class="contact-link">
+                            <i class="fas fa-envelope"></i>
+                            {{ course.trainer.contact_email }}
+                        </a>
+                    </div>
+                    <div class="social-links">
+                        {% if course.trainer.linkedin %}
+                            <a href="{{ course.trainer.linkedin }}" target="_blank" class="social-link linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        {% endif %}
+                        {% if course.trainer.twitter %}
+                            <a href="{{ course.trainer.twitter }}" target="_blank" class="social-link twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        {% endif %}
+                        {% if course.trainer.github %}
+                            <a href="{{ course.trainer.github }}" target="_blank" class="social-link github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Section -->
+    <div class="sidebar">
+        {% if not enrolled %}
+        <div class="enrollment-card">
+            <div class="price-tag">
+                <span class="currency">$</span>
+                <span class="amount">{{ course.price }}</span>
+                {% if course.discount %}
+                    <span class="discount-badge">{{ course.discount }}% OFF</span>
+                {% endif %}
+            </div>
+            <form method="POST" action="{% url 'enroll' course.id %}">
+                {% csrf_token %}
+                <button type="submit" class="enroll-button">
+                    <i class="fas fa-graduation-cap"></i>
+                    Enroll Now
+                </button>
+            </form>
+        </div>
+        {% endif %}
+
+        <!-- Lectures Section -->
+        <div class="lectures-card">
+            <h2><i class="fas fa-book-reader"></i> Course Content</h2>
+            <ul class="lecture-list" id="lectureList">
+                {% for lecture in lectures %}
+                <li class="lecture-item {% if not forloop.first and not enrolled %}locked{% endif %}"
+                    data-video-id="{{ lecture.video_id }}"
+                    data-title="{{ lecture.title }}">
+                    <div class="lecture-info">
+                        <span class="lecture-number">{{ lecture.serial_number }}</span>
+                        <h3 class="lecture-title">{{ lecture.title }}</h3>
+                    </div>
+                    {% if forloop.first or enrolled %}
+                        <span class="lecture-badge">
+                            {% if forloop.first %}Preview{% else %}Full{% endif %}
+                        </span>
+                    {% else %}
+                        <span class="lock-icon">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" href="app/js/script.js">
+{% endblock training %}

@@ -1,0 +1,15 @@
+<h1>{{ topic.title }}</h1>
+<p>{{ topic.description }}</p>
+
+<h2>Videos:</h2>
+<ul>
+    {% for video in videos %}
+        <li>{{ video.title }} - 
+            <video width="320" height="240" controls>
+                <source src="{{ video.video_file.url }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            {% if video.is_preview %}(Preview){% endif %}
+        </li>
+    {% endfor %}
+</ul>

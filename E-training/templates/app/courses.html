@@ -1,0 +1,34 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %}Courses{% endblock title %}
+{% block training %}
+<link rel="stylesheet" href="{% static 'app/css/course.css' %}" />
+
+<h1 class="text-center page-title">Employee Training Courses</h1>
+<h2 class="text-center welcome-text">Welcome to our website, {{ request.user.first_name }}</h2>
+
+<div class="container">
+    <div class="course-cards-container">
+        {% for course in courses %}
+        <div class="course-card">
+            <div class="course-image-container">
+                <img src="{{ course.resource.url }}" class="course-image" alt="Course Image">
+            </div>
+            <div class="course-content">
+                <h3 class="course-name">{{ course.name }}</h3>
+                <p class="course-description">{{ course.description|truncatewords:20 }}</p>
+                <div class="course-meta">
+                    <div class="course-price">${{ course.price }}</div>
+                    <div class="course-discount">{{ course.discount }}% OFF</div>
+                    <div class="course-duration">{{ course.length }} hours</div>
+                </div>
+                <a href="{% url 'course_details' course.id %}" class="btn-view-details">View Details</a>
+                {% comment %} <a href="{% url 'enroll' course.id %}" class="btn-view-details">Enroll Now</a> {% endcomment %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="{% static 'app/js/script.js' %}"></script>
+{% endblock training %}

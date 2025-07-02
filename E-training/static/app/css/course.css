@@ -1,0 +1,111 @@
+/* Base styles */
+.page-title {
+    font-size: 2rem; /* Reduced title font size */
+    margin: 1.5rem 0; /* Adjusted margin */
+    color: #333;
+}
+
+.welcome-text {
+    font-size: 1.2rem; /* Reduced welcome text font size */
+    margin-bottom: 1rem; /* Adjusted margin */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Card container */
+.course-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Reduced min card size */
+    gap: 15px; /* Reduced gap between cards */
+    margin-top: 1rem; /* Adjusted margin */
+}
+
+/* Individual course card */
+.course-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 350px; /* Fixed height for better alignment */
+}
+
+.course-image-container {
+    height: 150px; /* Reduced image container height */
+    overflow: hidden;
+}
+
+.course-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.course-content {
+    padding: 0.5rem; /* Reduced padding */
+    text-align: center;
+}
+
+.course-name {
+    font-size: 1.2rem; /* Reduced course name font size */
+    font-weight: bold;
+    margin-bottom: 0.5rem; /* Adjusted margin */
+}
+
+.course-description {
+    font-size: 0.9rem; /* Reduced description font size */
+    margin-bottom: 0.5rem; /* Adjusted margin */
+    color: #666;
+}
+
+.course-meta {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+}
+
+.course-price {
+    font-size: 1rem; /* Reduced price font size */
+    color: #28a745;
+}
+
+.course-discount {
+    font-size: 0.9rem; /* Reduced discount font size */
+    color: #dc3545;
+}
+
+.course-duration {
+    font-size: 0.9rem; /* Reduced duration font size */
+    color: #007bff;
+}
+
+/* Button */
+.btn-view-details {
+    background-color: #007bff;
+    color: white;
+    padding: 0.4rem 0.8rem; /* Reduced button padding */
+    text-decoration: none;
+    border-radius: 8px;
+    display: inline-block;
+    margin-top: 0.5rem; /* Adjusted margin */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .course-cards-container {
+        grid-template-columns: 1fr; /* Full width on mobile */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .course-cards-container {
+        grid-template-columns: repeat(2, 1fr); /* Two columns on tablet */
+    }
+}

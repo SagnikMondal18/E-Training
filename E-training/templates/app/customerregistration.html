@@ -1,0 +1,99 @@
+{% extends "app/base.html" %}
+{% load static %}
+
+{% block title %}Customer Registration{% endblock title %}
+{% block main-content %}
+<link rel="stylesheet" href="{% static 'app/css/style2.css' %}" />
+
+<section class="background-radial-gradient overflow-hidden">
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+
+      <!-- Left Content -->
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+        <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+          The best offer <br />
+          <span style="color: hsl(218, 81%, 75%)">For your Studies</span>
+        </h1>
+        <p class="mb-4 opacity-70" style="color: hsl(217, 50%, 97%)">
+          Our innovative Online Course Management System is designed to streamline learning and enhance the educational experience for both students and instructors. With features such as real-time progress tracking, interactive assignments, and personalized learning paths, the system ensures that learners can engage effectively with course content. Instructors have the tools to monitor performance, provide timely feedback, and foster a collaborative learning environment.
+        </p>
+      </div>
+
+      <!-- Registration Form -->
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div class="card bg-glass" style="width: 100%; max-width: 500px; margin: 0 auto;">
+          <div class="card-body px-4 py-5 px-md-5">
+            <form method="post">
+              {% csrf_token %}
+
+              <!-- Username Input -->
+              <div class="form-outline mb-4">
+                {{ form.username }}
+                <label class="form-label" for="{{ form.username.id_for_label }}">Username</label>
+              </div>
+
+              <!-- First Name Input -->
+              <div class="form-outline mb-4">
+                {{ form.first_name }}
+                <label class="form-label" for="{{ form.first_name.id_for_label }}">First Name</label>
+              </div>
+
+              <!-- Last Name Input -->
+              <div class="form-outline mb-4">
+                {{ form.last_name }}
+                <label class="form-label" for="{{ form.last_name.id_for_label }}">Last Name</label>
+              </div>
+
+              <!-- Email Input -->
+              <div class="form-outline mb-4">
+                {{ form.email }}
+                <label class="form-label" for="{{ form.email.id_for_label }}">Email Address</label>
+              </div>
+
+              <!-- Password Input -->
+              <div class="form-outline mb-4">
+                {{ form.password1 }}
+                <label class="form-label" for="{{ form.password1.id_for_label }}">Password</label>
+              </div>
+
+              <!-- Confirm Password Input -->
+              <div class="form-outline mb-4">
+                {{ form.password2 }}
+                <label class="form-label" for="{{ form.password2.id_for_label }}">Confirm Password</label>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary btn-block mb-4">
+                Sign Up
+              </button>
+
+              <!-- Redirect to Login -->
+              <p class="text-center text-muted mt-5 mb-0">
+                Already have an account? <a href="{% url 'login' %}" class="fw-bold text-body"><u>Login here</u></a>
+              </p>
+
+              <!-- Error Messages -->
+              {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                  <p class="alert alert-danger my-3">{{ error }}</p>
+                {% endfor %}
+              {% endif %}
+
+              <!-- Flash Messages -->
+              {% if messages %}
+                {% for msg in messages %}
+                  <div class="alert alert-{{ msg.tags }}" role="alert">
+                    {{ msg }}
+                  </div>
+                {% endfor %}
+              {% endif %}
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock main-content %}

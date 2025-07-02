@@ -1,0 +1,26 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %}About{% endblock title %}
+
+{% block main-content %}
+<section class="background-radial-gradient overflow-hidden">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 mb-5">
+                <div class="bg-glass text-center">
+                    <h2>About Us</h2>
+                    <p class="fs-4">Welcome to E-training website, where we believe that continuous learning is the key to personal and professional growth. In an ever-evolving world, staying ahead requires more than just skills; it demands a commitment to lifelong learning. Our Employee Learning Projects platform is dedicated to fostering that commitment by offering a comprehensive suite of training programs designed to empower employees at all levels.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-12 mb-5">
+                <div class="bg-glass text-center">
+                    <h2>Missions</h2>
+                    <p class="fs-4">Our mission is to cultivate a culture of learning and development that aligns with both individual aspirations and organizational goals. We strive to provide opportunities for employees to acquire new skills, enhance existing ones, and explore innovative ideas that will drive their success and contribute to the company's growth.</p>
+                </div>
+            </div>
+        </div>
+    </div>    
+</section>
+<link rel="stylesheet" href="{% static 'app/css/about.css' %}">
+{% endblock main-content %}

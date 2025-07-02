@@ -1,0 +1,67 @@
+{% extends "app/base.html" %}
+{% load static %}
+{% block title %}Customer Login{% endblock title %}
+{% block main-content %}
+<link rel="stylesheet" href="{% static 'app/css/style2.css' %}" />
+
+<section class="background-radial-gradient overflow-hidden">
+  <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
+    <div class="row gx-lg-5 align-items-center mb-5">
+      <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
+        <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
+          The best offer <br />
+          <span style="color: hsl(218, 81%, 75%)">For your Studies</span>
+        </h1>
+        <p class="mb-4 opacity-70" style="color: hsl(217, 50%, 97%)">
+          Our innovative Online Course Management System is designed to streamline learning and enhance the educational experience for both students and instructors. With features such as real-time progress tracking, interactive assignments, and personalized learning paths, the system ensures that learners can engage effectively with course content. Instructors have the tools to monitor performance, provide timely feedback, and foster a collaborative learning environment. Whether it's managing individual courses or offering a comprehensive curriculum, our platform adapts to meet the needs of modern education.
+        </p>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
+        <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+        <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+        <div class="card bg-glass">
+          <div class="card-body px-4 py-5 px-md-5">
+            <form method="POST">
+              {% csrf_token %}
+              
+              <!-- Username input -->
+              <div class="form-outline mb-4">
+                {{ form.username }}
+                <label class="form-label" for="{{ form.username.id_for_label }}">User name</label>
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                {{ form.password }}
+                <label class="form-label" for="{{ form.password.id_for_label }}">Password</label>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block mb-4">
+                Login
+              </button>
+
+              <p class="text-center text-muted mt-5 mb-0">Don't have an account? 
+                <a href="{% url 'customerregistration' %}" class="fw-bold text-body"><u>Sign up here</u></a>
+              </p>
+
+              {% if form.non_field_errors %}
+                {% for error in form.non_field_errors %}
+                  <p class="alert alert-danger my-3">{{ error }}</p>
+                {% endfor %}
+              {% endif %}
+
+              {% if messages %}
+                {% for msg in messages %}
+                  <div class="alert alert-{{ msg.tags }}" role="alert">{{ msg }}</div>
+                {% endfor %}
+              {% endif %}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock main-content %}
